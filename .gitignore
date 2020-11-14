@@ -6,3 +6,6 @@ outputs
 
 # Editor
 .vscode
+
+# MLflow
+mlruns

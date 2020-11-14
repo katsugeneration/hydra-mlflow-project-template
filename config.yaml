@@ -1,2 +1,3 @@
+experiment: test
 defaults:
   - module: test
