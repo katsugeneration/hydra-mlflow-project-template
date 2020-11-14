@@ -46,3 +46,13 @@ parameter:
 ```sh
 python main.py module=test module.parameter.name=jiro
 ```
+
+# Cutomise processing
+## Save artifacts
+Runner class has artifacts property for mlflow save. You specify runner artifacts by overriding artifacts property.
+
+```python
+@property
+def artifacts(self):
+    return []
+```

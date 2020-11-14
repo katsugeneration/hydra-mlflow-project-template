@@ -18,6 +18,7 @@ def main(config: DictConfig) -> None:
     parameter = store[config.module.module](**config.module.parameter)
     runner = module[config.module.module](parameter)
     runner.run()
+    tracker.log_artifacts(runner.artifacts)
 
     tracker.end_run()
 
