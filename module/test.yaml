@@ -1,0 +1,4 @@
+module: test
+parameter:
+  name: tarou
+  age: 12

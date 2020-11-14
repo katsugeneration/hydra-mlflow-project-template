@@ -1,0 +1,8 @@
+# Hydra
+outputs
+
+# Python
+*.pyc
+
+# Editor
+.vscode
