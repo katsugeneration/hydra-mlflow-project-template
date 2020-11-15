@@ -1,5 +1,5 @@
 # MLflow Tracker
-from typing import Any, List
+from typing import Any, List, Dict
 from mlflow.tracking import MlflowClient
 
 
@@ -13,13 +13,21 @@ class Tracker():
     def log_param(self, key: str, value: Any):
         self.client.log_param(self.run_id, key, value)
 
-    def log_params(self, params: dict):
+    def log_params(self, params: Dict):
         for k, v in params.items():
             self.log_param(k, v)
 
     def log_artifacts(self, artifacts: List[str]):
         for artifact in artifacts:
             self.client.log_artifact(self.run_id, artifact)
+
+    def log_metrics(self, metrics: Dict[str, Any]):
+        for k, v in metrics.items():
+            if isinstance(v, list):
+                for i in range(len(v)):
+                    self.client.log_metric(self.run_id, k, v[i], step=i)
+            else:
+                self.client.log_metric(self.run_id, k, v)
 
     def start_run(self):
         try:

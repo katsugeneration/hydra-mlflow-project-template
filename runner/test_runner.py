@@ -14,5 +14,18 @@ class TestRunner(BaseRunner):
         self.name = parameter.name
         self.age = parameter.age
 
+    @property
+    def artifacts(self):
+        return ['txt']
+
+    @property
+    def metrics(self):
+        return {
+            'a': 1,
+            'b': [1, 2]
+        }
+
     def run(self):
         print('%s is %d years old.' % (self.name, self.age))
+        with open('txt', 'w') as f:
+            f.write('%s is %d years old.' % (self.name, self.age))

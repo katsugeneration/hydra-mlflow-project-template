@@ -56,3 +56,12 @@ Runner class has artifacts property for mlflow save. You specify runner artifact
 def artifacts(self):
     return []
 ```
+
+## Save Metrics
+Runner class has metrics property for mlflow save. You specify runner metrics by overriding artifacts property.
+
+```python
+@property
+def metrics(self):
+    return {}
+```
