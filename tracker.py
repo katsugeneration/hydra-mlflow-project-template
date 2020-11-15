@@ -19,7 +19,7 @@ class Tracker():
 
     def log_artifacts(self, artifacts: List[str]):
         for artifact in artifacts:
-            self.client.log_artifacts(self.run_id, artifact)
+            self.client.log_artifact(self.run_id, artifact)
 
     def start_run(self):
         try:
