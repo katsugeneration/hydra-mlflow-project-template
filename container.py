@@ -2,7 +2,7 @@
 from runner.test_runner import TestRunner, TestRunnerParameter
 
 
-module = {
+runner = {
     'test': TestRunner
 }
 

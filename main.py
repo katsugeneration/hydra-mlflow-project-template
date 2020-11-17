@@ -3,7 +3,7 @@
 import pathlib
 import hydra
 from omegaconf import DictConfig
-from container import module, store
+import container
 from tracker import Tracker
 
 
@@ -12,11 +12,11 @@ def main(config: DictConfig) -> None:
     cwd = pathlib.Path(hydra.utils.get_original_cwd())
     tracker = Tracker(config.experiment, tracking_uri=str(cwd.joinpath('mlruns')))
     tracker.start_run()
-    tracker.log_param('module', config.module.module)
-    tracker.log_params(config.module.parameter)
+    tracker.log_param('runner', config.runner.runner)
+    tracker.log_params(config.runner.parameter)
 
-    parameter = store[config.module.module](**config.module.parameter)
-    runner = module[config.module.module](parameter)
+    parameter = container.store[config.runner.runner](**config.runner.parameter)
+    runner = container.runner[config.runner.runner](parameter)
     runner.run()
     tracker.log_artifacts(runner.artifacts)
     tracker.log_metrics(runner.metrics)

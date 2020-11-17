@@ -19,10 +19,10 @@ class TestRunner():
 ```
 
 
-2. Register runner class and parameter class related module name in `container.py`.
+2. Register runner class and parameter class related runner name in `container.py`.
 
 ```python
-module = {
+runner = {
     'test': TestRunner
 }
 
@@ -31,11 +31,11 @@ store = {
 }
 ```
 
-3. Add module hydra styled group parameter file have module name in module directory.
+3. Add runner hydra styled group parameter file have runner name in runner directory.
 
 ```yml
 # @package _group_
-module: test
+runner: test
 parameter:
   name: tarou
   age: 12
@@ -44,7 +44,7 @@ parameter:
 4. Run `main.py` with custom parameter.
 
 ```sh
-python main.py module=test module.parameter.name=jiro
+python main.py runner=test runner.parameter.name=jiro
 ```
 
 # Cutomise processing

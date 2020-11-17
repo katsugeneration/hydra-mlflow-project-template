@@ -1,5 +1,5 @@
 # @package _group_
-module: test
+runner: test
 parameter:
   name: tarou
   age: 12
