@@ -54,7 +54,7 @@ Runner class has artifacts property for mlflow save. You specify runner artifact
 ```python
 @property
 def artifacts(self):
-    return []
+    return ['txt']
 ```
 
 ## Save Metrics
@@ -63,5 +63,8 @@ Runner class has metrics property for mlflow save. You specify runner metrics by
 ```python
 @property
 def metrics(self):
-    return {}
+    return {
+        'a': 1,
+        'b': [1, 2]
+    }
 ```
