@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ml-gpu:
+    runtime: nvidia
+    build: trainer
+    tty: true
+
+    volumes:
+      - ./:/app
+      - ./mlruns:/app/mlruns
+
+  mlflow:
+    build: mlflow
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./mlruns:/mlruns
